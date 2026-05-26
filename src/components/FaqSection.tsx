@@ -1,5 +1,6 @@
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import mascotImg from "../assets/images/falacards_mascot_support_1779758476116.png";
 import { 
   Volume2, WifiOff, BatteryCharging, Layers, ShieldCheck, 
   Droplets, MousePointer, Truck, Award, HelpCircle, ChevronDown, MessageSquare,
@@ -103,7 +104,6 @@ export default function FaqSection() {
     email: "",
     motivo: ""
   });
-  const mascotImg = "/src/assets/images/falacards_mascot_support_1779758476116.png";
 
   const toggleItem = (id: string) => {
     setOpenId(prev => (prev === id ? null : id));

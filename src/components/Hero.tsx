@@ -2,10 +2,10 @@ import { ShoppingCart, ShieldCheck, Award, Lock, Sparkles, Volume2, Brain, BookO
 import { motion } from "motion/react";
 import { useState } from "react";
 import InteractiveToySimulator from "./InteractiveToySimulator";
+import heroImagePath from "../assets/images/falacards_hero_toy_1779754025168.png";
 
 export default function Hero() {
   const [showOrderModal, setShowOrderModal] = useState(false);
-  const heroImagePath = "/src/assets/images/falacards_hero_toy_1779754025168.png";
 
   const handleCTAClick = () => {
     setShowOrderModal(true);

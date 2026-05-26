@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import toddlerBusImg from "../assets/images/falacards_toddler_bus_1779756456086.png";
 import { 
   Sparkles, Star, Brain, Volume2, Mic, BookOpen, Globe, Lightbulb, 
   Smile, Heart, Eye, HelpCircle, ArrowRight, ShieldCheck, Check
@@ -152,7 +153,6 @@ const GROW_BENEFITS = [
 ];
 
 export default function CategoriesAndBenefits() {
-  const toddlerBusImg = "/src/assets/images/falacards_toddler_bus_1779756456086.png";
 
   return (
     <section className="relative w-full bg-white py-16 md:py-24 px-4 md:px-8 border-t border-gray-100 overflow-hidden" id="categories-benefits-section">

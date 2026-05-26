@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import toddlerBusImg from "../assets/images/falacards_toddler_bus_1779756456086.png";
+import heroToyImg from "../assets/images/falacards_hero_toy_1779754025168.png";
 import { 
   Star, Check, Users, ShieldCheck, Sparkles, ChevronLeft, ChevronRight, Play, Pause, Volume2 
 } from "lucide-react";
@@ -32,7 +34,7 @@ const TESTIMONIALS_DATA: Testimonial[] = [
     avatarSeed: "female-bruna",
     tags: ["Sem telas", "Autonomia", "Inglês"],
     date: "Há 4 dias",
-    videoThumbnail: "/src/assets/images/falacards_toddler_bus_1779756456086.png",
+    videoThumbnail: toddlerBusImg,
     videoSource: "https://play.tynk.ai/p/de8b505c-1bb5-47b8-8316-be97ce95bfda",
     aspectClass: "aspect-[9/16]"
   },
@@ -47,7 +49,7 @@ const TESTIMONIALS_DATA: Testimonial[] = [
     avatarSeed: "female-patricia",
     tags: ["Diversão", "Inglês"],
     date: "Há 1 semana",
-    videoThumbnail: "/src/assets/images/falacards_hero_toy_1779754025168.png",
+    videoThumbnail: heroToyImg,
     videoSource: "https://play.tynk.ai/p/9193fc24-df91-4d3e-9aa7-ff9cfb4877d3",
     aspectClass: "aspect-[9/16]"
   }
@@ -177,8 +179,8 @@ export default function TestimonialsSection() {
                     {isVideoActive ? (
                       <div className="w-full h-full relative animate-fadeIn">
                         <iframe 
-                          src={`${testimonial.videoSource}?autoplay=1&muted=1&loop=1`}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          src={`${testimonial.videoSource}?autoplay=1&muted=1&mute=1&playsinline=1&loop=1&autoplay=true&muted=true&playsinline=true&loop=true`}
+                          allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write"
                           allowFullScreen
                           className="w-full h-full border-0 absolute inset-0 rounded-2xl"
                           id={`video-player-${testimonial.id}`}

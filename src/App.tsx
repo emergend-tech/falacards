@@ -17,12 +17,10 @@ import { Sparkles } from "lucide-react";
 export default function App() {
   return (
     <div className="min-h-screen bg-[#FFFDF9] font-sans text-gray-900 selection:bg-brand-yellow selection:text-gray-950 flex flex-col" id="landing-page-container">
-      {/* ... top bar ... */}
       {/* Dynamic Urgent Promo Bar */}
-      <div className="w-full bg-brand-blue text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest py-2 px-4 text-center flex items-center justify-center gap-2 relative z-50 shadow-xs" id="top-promo-bar">
+      <div className="w-full bg-brand-blue text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest py-2.5 px-4 text-center flex items-center justify-center gap-2 relative z-50 shadow-xs" id="top-promo-bar">
         <Sparkles className="w-3.5 h-3.5 text-brand-yellow animate-pulse shrink-0" />
-        <span>PROMOÇÃO DE PRÉ-LANÇAMENTO: GANHE 15% OFF + FRETE GRÁTIS HOJE!</span>
-        <span className="hidden md:inline bg-brand-yellow text-gray-950 px-2 py-0.5 rounded-full text-[9px] font-black shrink-0 animate-bounce">FALAFREE15</span>
+        <span>PROMOÇÃO RELÂMPAGO, SOMENTE HOJE R$ 129,90 + FRETE GRÁTIS</span>
       </div>
 
       {/* Main Brand Header Navigation */}
