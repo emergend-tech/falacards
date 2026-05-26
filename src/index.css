@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Quicksand", sans-serif;
+  --color-brand-blue-dark: #0043a4;
+  --color-brand-blue: #0253cc;
+  --color-brand-blue-light: #e6effe;
+  --color-brand-yellow: #f8c325;
+  --color-brand-yellow-hover: #e0ae18;
+  --color-brand-green: #37c86a;
+}

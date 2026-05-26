@@ -1,0 +1,6 @@
+{
+  "name": "FalaCards",
+  "description": "Seção Hero interactiva e premium do FalaCards - Leitor de cartões interativo para aprender inglês brincando e sem telas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
