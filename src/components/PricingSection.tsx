@@ -23,7 +23,7 @@ const PRICING_BENEFITS: BenefitLine[] = [
   { text: "BÔNUS: Guia prático de bilinguismo na primeira infância", isBonus: true }
 ];
 
-export default function PricingSection() {
+export default function PricingSection({ onNavigateToChooseModel }: { onNavigateToChooseModel?: () => void }) {
   const [timeLeft, setTimeLeft] = useState(1140); // 19 minutes in seconds
   const [selectedPayment, setSelectedPayment] = useState<"card" | "pix">("card");
 
@@ -174,7 +174,13 @@ export default function PricingSection() {
             {/* Direct Instant Action Button */}
             <div className="mt-6 space-y-3">
               <button 
-                onClick={() => alert("Compra simulada com sucesso! Você receberá os detalhes no WhatsApp e e-mail cadastrados.")}
+                onClick={() => {
+                  if (onNavigateToChooseModel) {
+                    onNavigateToChooseModel();
+                  } else {
+                    alert("Compra simulada com sucesso! Você receberá os detalhes no WhatsApp e e-mail cadastrados.");
+                  }
+                }}
                 className="w-full bg-brand-yellow hover:bg-brand-yellow-hover text-gray-950 font-black tracking-widest py-4.5 rounded-2xl shadow-[0_5px_0_0_#d39e0d] border border-amber-400 text-sm md:text-base flex items-center justify-center gap-2 cursor-pointer transition-all"
                 id="pricing-cta-purchase"
               >

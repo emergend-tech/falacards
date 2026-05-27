@@ -60,7 +60,7 @@ export default function Header() {
           initial={{ x: 20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex items-center gap-3 bg-brand-blue-light/70 border border-brand-blue-light rounded-2xl px-4 py-2 text-xs md:text-sm shadow-xs"
+          className="hidden lg:flex items-center gap-3 bg-brand-blue-light/70 border border-brand-blue-light rounded-2xl px-4 py-2 text-xs md:text-sm shadow-xs"
           id="header-shipping"
         >
           <div className="p-2 bg-brand-blue rounded-xl text-white">
@@ -75,8 +75,8 @@ export default function Header() {
         </motion.div>
       </div>
 
-      {/* Mobile Benefits Bar - Horizontal scrollable or slider */}
-      <div className="flex lg:hidden mt-3 pt-2 border-t border-gray-50 overflow-x-auto scrollbar-none gap-5 justify-between px-1" id="header-usp-mobile">
+      {/* Mobile Benefits Bar - Hidden here as they are now under the hero video */}
+      <div className="hidden mt-3 pt-2 border-t border-gray-50 overflow-x-auto scrollbar-none gap-5 justify-between px-1" id="header-usp-mobile">
         <div className="flex items-center gap-1.5 shrink-0 text-xs">
           <Brain className="w-4 h-4 text-purple-500" />
           <span className="font-medium text-gray-700">Foca no Vocabulário</span>

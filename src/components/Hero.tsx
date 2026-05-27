@@ -1,33 +1,120 @@
-import { ShoppingCart, ShieldCheck, Award, Lock, Sparkles, Volume2, Brain, BookOpen, Heart, Globe, Play, Gift } from "lucide-react";
+import { ShoppingCart, ShieldCheck, Award, Lock, Sparkles, Volume2, Brain, BookOpen, Heart, Globe, Play, Gift, Truck } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import InteractiveToySimulator from "./InteractiveToySimulator";
 import heroImagePath from "../assets/images/falacards_hero_toy_1779754025168.png";
 
-export default function Hero() {
+export default function Hero({ onNavigateToChooseModel }: { onNavigateToChooseModel?: () => void }) {
   const [showOrderModal, setShowOrderModal] = useState(false);
 
   const handleCTAClick = () => {
-    setShowOrderModal(true);
+    if (onNavigateToChooseModel) {
+      onNavigateToChooseModel();
+    } else {
+      setShowOrderModal(true);
+    }
   };
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-white to-[#FAFAF4] pt-8 md:pt-14 pb-20 md:pb-32" id="hero-section">
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         
-        {/* Main 2-Column Hero Structure */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" id="hero-grid">
+        {/* TOP CENTRED HEADER SECTION: Title & Presentation Video */}
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-12" id="hero-top-presentation">
           
-          {/* LEFT COLUMN: Texts & Value Propositions (Cols 1-7) */}
-          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left" id="hero-left-content">
-            
-            {/* Playful Badges Row */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-6" id="hero-badges-wrapper">
+          {/* Main Rounded Title */}
+          <motion.h2 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight md:leading-[1.15] text-center mb-6"
+            id="hero-main-heading"
+          >
+            Aprender <span className="text-brand-blue">inglês</span> ficou <span className="text-brand-blue">divertido</span> <span className="block md:inline">(e sem telas).</span>
+          </motion.h2>
+
+          {/* DEMO VIDEO CONTAINER - BEAUTIFULLY FRAMED & ALIGNED RIGHT BELOW THE TITLE */}
+          <div className="mt-2 flex flex-col items-center w-full" id="hero-demo-video-wrapper">
+            <div className="w-full max-w-[340px] bg-white border-4 border-white rounded-[24px] p-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.08)] ring-1 ring-gray-150 relative overflow-hidden" id="video-card-frame">
+              
+              {/* Outer brand decoration bar representing the brand toy */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-brand-blue opacity-85"></div>
+              
+              {/* Label Header inside card */}
+              <div className="pt-2 pb-1.5 px-1 text-center flex items-center justify-center gap-1.5" id="video-card-header">
+                <span className="w-2 h-2 rounded-full bg-brand-green animate-ping"></span>
+                <span className="text-[10px] sm:text-xs font-black text-gray-800 uppercase tracking-wider">
+                  Assista ao FalaCards em Ação
+                </span>
+              </div>
+
+              {/* Video Player element with exactly aspect-[4/5] configuration */}
+              <div className="relative rounded-xl overflow-hidden bg-slate-950 aspect-[4/5] shadow-inner" id="video-player-container">
+                <iframe 
+                  src="https://play.tynk.ai/p/c38b95cf-a14c-4cb5-a11c-73f98cf48a5e"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full border-0 absolute inset-0"
+                  id="toy-demonstrat-video"
+                ></iframe>
+              </div>
+
+              {/* Caption underneath indicating real function shown in the video */}
+              <div className="mt-2.5 px-1 pb-1 text-center" id="video-card-caption">
+                <p className="text-[10px] sm:text-[11px] text-brand-blue font-extrabold leading-tight">
+                  🔊 Associação Bilíngue Natural e Divertida:
+                </p>
+                <p className="text-[9px] sm:text-[10px] text-gray-500 font-bold leading-normal mt-0.5">
+                  Ensina as palavras primeiro em português e repete imediatamente em inglês!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ELEMENTS FROM THE SCREENSHOT PLACED BELOW THE VIDEO */}
+          <div className="mt-8 flex flex-col items-center gap-5 w-full max-w-xl px-2 animate-fadeIn" id="hero-below-video-features">
+            {/* 1. Free Shipping Highlight Badge */}
+            <motion.div 
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="inline-flex items-center gap-3 bg-brand-blue-light/70 border border-brand-blue-light rounded-2xl px-5 py-2.5 text-xs sm:text-sm shadow-xs"
+              id="hero-below-video-shipping"
+            >
+              <div className="p-2 bg-brand-blue rounded-xl text-white">
+                <Truck className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col leading-tight text-left">
+                <p className="text-gray-700">
+                  <span className="font-extrabold text-brand-blue">Frete Grátis</span> para
+                </p>
+                <span className="font-semibold text-gray-500">todo o Brasil</span>
+              </div>
+            </motion.div>
+
+            {/* 2. Micro Benefit Row */}
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-700 bg-gray-50/50 border border-gray-100/70 py-2.5 px-4 rounded-full" id="hero-below-video-usp">
+              <div className="flex items-center gap-1.5 font-bold">
+                <Brain className="w-4 h-4 text-purple-500" />
+                <span>Foca no Vocabulário</span>
+              </div>
+              <div className="flex items-center gap-1.5 font-bold">
+                <Volume2 className="w-4 h-4 text-brand-blue animate-pulse" />
+                <span>Som Interativo</span>
+              </div>
+              <div className="flex items-center gap-1.5 font-bold">
+                <ShieldCheck className="w-4 h-4 text-brand-green" />
+                <span>Zero Telas</span>
+              </div>
+            </div>
+
+            {/* 3. Playful Badges Row (The Colorful Pills) */}
+            <div className="flex flex-wrap items-center justify-center gap-2 mt-1" id="hero-badges-wrapper">
               <motion.div 
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-1.5 bg-[#FFF0BD] text-amber-950 font-extrabold text-xs px-3.5 py-1.5 rounded-full border border-amber-200 shadow-3xs"
+                transition={{ duration: 0.4, delay: 0.3 }}
+                className="inline-flex items-center gap-1.5 bg-[#FFF0BD] text-amber-950 font-extrabold text-[11px] sm:text-xs px-3.5 py-1.5 rounded-full border border-amber-200 shadow-3xs"
                 id="hero-badge"
               >
                 <Sparkles className="w-3 h-3 text-amber-700 animate-pulse" />
@@ -37,8 +124,8 @@ export default function Hero() {
               <motion.div 
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.05 }}
-                className="inline-flex items-center gap-1 bg-blue-50 text-brand-blue font-extrabold text-xs px-3.5 py-1.5 rounded-full border border-blue-100 shadow-3xs"
+                transition={{ duration: 0.4, delay: 0.35 }}
+                className="inline-flex items-center gap-1 bg-blue-50 text-brand-blue font-extrabold text-[11px] sm:text-xs px-3.5 py-1.5 rounded-full border border-blue-100 shadow-3xs"
                 id="hero-badge-bilingual"
               >
                 <span>🇧🇷 🇺🇸 Português + Inglês</span>
@@ -47,36 +134,29 @@ export default function Hero() {
               <motion.div 
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                className="inline-flex items-center bg-emerald-50 text-emerald-800 font-extrabold text-xs px-3.5 py-1.5 rounded-full border border-emerald-100 shadow-3xs"
+                transition={{ duration: 0.4, delay: 0.4 }}
+                className="inline-flex items-center bg-emerald-50 text-emerald-800 font-extrabold text-[11px] sm:text-xs px-3.5 py-1.5 rounded-full border border-emerald-100 shadow-3xs"
                 id="hero-badge-sequence"
               >
                 <span>Primeiro em Português, depois em Inglês</span>
               </motion.div>
             </div>
+          </div>
 
-            {/* Main Rounded Title */}
-            <motion.h2 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight md:leading-[1.15] text-center lg:text-left"
-              id="hero-main-heading"
-            >
-              Aprender <span className="text-brand-blue">inglês</span> ficou <span className="text-brand-blue">divertido</span> <span className="block md:inline">(e sem telas).</span>
-            </motion.h2>
+        </div>
 
-            {/* Interactive Demo Simulator only on Mobile screen sizes */}
-            <div className="block lg:hidden w-full mt-6 -mb-2" id="hero-mobile-demo-simulator">
-              <InteractiveToySimulator heroImage={heroImagePath} />
-            </div>
-
+        {/* BOTTOM SECTION: Value propositional details, benefits and play simulation */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center" id="hero-details-grid">
+          
+          {/* LEFT COLUMN: Subtitle, benefits & order button */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left" id="hero-left-content">
+            
             {/* Paragraph Subtitle */}
             <motion.p 
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-base sm:text-lg md:text-xl text-gray-600 mt-6 leading-relaxed max-w-2xl font-medium text-center lg:text-left"
+              className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl font-medium text-center lg:text-left animate-fadeIn"
               id="hero-subtext"
             >
               FalaCards é o leitor interativo que reproduz as palavras <span className="font-extrabold text-brand-blue">primeiro em português e depois em inglês</span>, facilitando a associação bilíngue natural para crianças de <span className="font-extrabold text-brand-blue">2 a 6 anos</span>.
@@ -95,7 +175,7 @@ export default function Hero() {
                 <div className="w-9 h-9 shrink-0 bg-brand-green text-white rounded-full flex items-center justify-center font-bold shadow-xs">
                   <Volume2 className="w-5 h-5 shadow-inner" />
                 </div>
-                <span className="text-gray-700 font-semibold text-sm sm:text-base">
+                <span className="text-gray-700 font-semibold text-sm sm:text-base text-left">
                   Mais de 112 cartões que falam português primeiro e inglês depois
                 </span>
               </motion.div>
@@ -111,7 +191,7 @@ export default function Hero() {
                 <div className="w-9 h-9 shrink-0 bg-purple-500 text-white rounded-full flex items-center justify-center font-bold shadow-xs">
                   <Brain className="w-5 h-5 shadow-inner" />
                 </div>
-                <span className="text-gray-700 font-semibold text-sm sm:text-base">
+                <span className="text-gray-700 font-semibold text-sm sm:text-base text-left">
                   Estimula fala, memória e concentração
                 </span>
               </motion.div>
@@ -127,7 +207,7 @@ export default function Hero() {
                 <div className="w-9 h-9 shrink-0 bg-brand-blue text-white rounded-full flex items-center justify-center font-bold shadow-xs">
                   <BookOpen className="w-5 h-5 shadow-inner" />
                 </div>
-                <span className="text-gray-700 font-semibold text-sm sm:text-base">
+                <span className="text-gray-700 font-semibold text-sm sm:text-base text-left">
                   Aprendizado autodidata e interativo
                 </span>
               </motion.div>
@@ -143,7 +223,7 @@ export default function Hero() {
                 <div className="w-9 h-9 shrink-0 bg-rose-500 text-white rounded-full flex items-center justify-center font-bold shadow-xs">
                   <Heart className="w-5 h-5 shadow-inner" />
                 </div>
-                <span className="text-gray-700 font-semibold text-sm sm:text-base">
+                <span className="text-gray-700 font-semibold text-sm sm:text-base text-left">
                   Perfeito para o dia a dia e para presentear
                 </span>
               </motion.div>
@@ -163,7 +243,7 @@ export default function Hero() {
               </motion.button>
               
               {/* Security trust bullet points directly under the button */}
-              <div className="flex flex-wrap items-center gap-y-2 gap-x-6 mt-6 text-xs md:text-sm text-gray-500 font-medium" id="hero-trust-badges">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-6 mt-6 text-xs md:text-sm text-gray-500 font-medium" id="hero-trust-badges">
                 <div className="flex items-center gap-1.5" id="badge-secured">
                   <ShieldCheck className="w-4.5 h-4.5 text-brand-green" />
                   <span>Compra 100% segura</span>
@@ -177,51 +257,12 @@ export default function Hero() {
                   <span>Privacidade protegida</span>
                 </div>
               </div>
-
-              {/* DEMO VIDEO CONTAINER - BEAUTIFULLY FRAMED & ALIGNED */}
-              <div className="mt-8 flex flex-col items-center lg:items-start w-full" id="hero-demo-video-wrapper">
-                <div className="w-full max-w-[320px] bg-white border-4 border-white rounded-[24px] p-2.5 shadow-[0_12px_40px_rgba(0,0,0,0.08)] ring-1 ring-gray-150 relative overflow-hidden" id="video-card-frame">
-                  
-                  {/* Outer brand decoration bar representing the brand toy */}
-                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-brand-blue opacity-85"></div>
-                  
-                  {/* Label Header inside card */}
-                  <div className="pt-2 pb-1.5 px-1 text-center flex items-center justify-center gap-1.5" id="video-card-header">
-                    <span className="w-2 h-2 rounded-full bg-brand-green animate-ping"></span>
-                    <span className="text-[10px] sm:text-xs font-black text-gray-800 uppercase tracking-wider">
-                      Assista ao FalaCards em Ação
-                    </span>
-                  </div>
-
-                  {/* Video Player element with exactly aspect-[4/5] configuration as requested */}
-                  <div className="relative rounded-xl overflow-hidden bg-slate-950 aspect-[4/5] shadow-inner" id="video-player-container">
-                    <iframe 
-                      src="https://play.tynk.ai/p/c38b95cf-a14c-4cb5-a11c-73f98cf48a5e"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full border-0 absolute inset-0"
-                      id="toy-demonstrat-video"
-                    ></iframe>
-                  </div>
-
-                  {/* Caption underneath indicating real function shown in the video */}
-                  <div className="mt-2.5 px-1 pb-1 text-center" id="video-card-caption">
-                    <p className="text-[10px] sm:text-[11px] text-brand-blue font-extrabold leading-tight">
-                      🔊 Associação Bilíngue Natural e Divertida:
-                    </p>
-                    <p className="text-[9px] sm:text-[10px] text-gray-500 font-bold leading-normal mt-0.5">
-                      Ensina as palavras primeiro em português e repete imediatamente em inglês!
-                    </p>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
           </div>
 
           {/* RIGHT COLUMN: Interactive Toy Visual (Cols 8-12) */}
-          <div className="hidden lg:flex lg:col-span-5 items-center justify-center" id="hero-right-content">
+          <div className="col-span-1 lg:col-span-5 flex items-center justify-center" id="hero-right-content">
             <InteractiveToySimulator heroImage={heroImagePath} />
           </div>
 
@@ -380,7 +421,7 @@ export default function Hero() {
               </div>
               <div className="bg-brand-blue-light/50 border border-brand-blue-light text-brand-blue p-3.5 rounded-2xl text-xs font-semibold flex items-center justify-between">
                 <span>⚡ Preço especial de pré-lançamento</span>
-                <span className="text-sm font-black text-brand-blue">R$ 189,90</span>
+                <span className="text-sm font-black text-brand-blue">R$ 129,90</span>
               </div>
             </div>
 

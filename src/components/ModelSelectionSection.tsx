@@ -122,9 +122,9 @@ const DinoToySvg = ({ bodyColor, spineColor, cardColor }: { bodyColor: string, s
   </svg>
 );
 
-export default function ModelSelectionSection() {
+export default function ModelSelectionSection({ onNavigateToChooseModel }: { onNavigateToChooseModel?: (modelId?: string) => void }) {
   return (
-    <section className="relative w-full bg-[#FCFCFA] py-14 px-4 sm:px-6 md:px-8 border-t border-gray-150/50" id="model-selection-section">
+    <section className="relative w-full bg-[#FCFCFA] py-14 px-4 sm:px-6 md:px-8 border-t border-gray-150/50 fill-interactive-anchor" id="model-selection-section">
       <div className="max-w-xl mx-auto md:max-w-2xl lg:max-w-4xl">
         
         {/* CENTERED CORRESPONDING HEADER */}
@@ -143,7 +143,7 @@ export default function ModelSelectionSection() {
 
           {/* Supporting fine subtitle description */}
           <p className="text-xs sm:text-sm text-gray-500 font-semibold leading-relaxed max-w-lg mx-auto mt-4" id="model-subtitle">
-            Duas versões divertidas com cores encantadoras para tornar o aprendizado ainda mais especial.
+            Duas versões divertidas com cores encantadoras para tornar o aprendizado ainda mais especial. Clique em qualquer modelo para reservar o seu!
           </p>
         </div>
 
@@ -161,7 +161,11 @@ export default function ModelSelectionSection() {
             <div className="grid grid-cols-2 gap-4 max-w-lg md:max-w-2xl mx-auto" id="gatinho-grid">
               
               {/* Pink Kitty Option */}
-              <div className="bg-white rounded-[24px] border border-gray-150/60 p-4 sm:p-5 flex flex-col items-center justify-between shadow-3xs hover:shadow-2xs transition-shadow duration-300" id="card-pink-kitty">
+              <button 
+                onClick={() => onNavigateToChooseModel?.("kitty-pink")}
+                className="bg-white rounded-[24px] border border-gray-150/60 p-4 sm:p-5 flex flex-col items-center justify-between shadow-3xs hover:shadow-2xs transition-shadow duration-300 w-full hover:scale-102 cursor-pointer outline-none focus:ring-2 focus:ring-brand-blue/35" 
+                id="card-pink-kitty"
+              >
                 <div className="w-full aspect-square flex items-center justify-center p-2">
                   <KittyToySvg bodyColor="#FF8DA1" eyeButtonsColor="#38BDF8" cardColor="#E0F2FE" />
                 </div>
@@ -170,10 +174,14 @@ export default function ModelSelectionSection() {
                   <span className="w-3 h-3 rounded-full bg-[#FF8DA1] shrink-0"></span>
                   <span className="text-xs sm:text-sm font-extrabold text-[#1E293B]">Rosa</span>
                 </div>
-              </div>
+              </button>
 
               {/* Blue Kitty Option */}
-              <div className="bg-white rounded-[24px] border border-gray-150/60 p-4 sm:p-5 flex flex-col items-center justify-between shadow-3xs hover:shadow-2xs transition-shadow duration-300" id="card-blue-kitty">
+              <button 
+                onClick={() => onNavigateToChooseModel?.("kitty-blue")}
+                className="bg-white rounded-[24px] border border-gray-150/60 p-4 sm:p-5 flex flex-col items-center justify-between shadow-3xs hover:shadow-2xs transition-shadow duration-300 w-full hover:scale-102 cursor-pointer outline-none focus:ring-2 focus:ring-brand-blue/35" 
+                id="card-blue-kitty"
+              >
                 <div className="w-full aspect-square flex items-center justify-center p-2">
                   <KittyToySvg bodyColor="#38BDF8" eyeButtonsColor="#FF8DA1" cardColor="#FFF0F5" />
                 </div>
@@ -182,7 +190,7 @@ export default function ModelSelectionSection() {
                   <span className="w-3 h-3 rounded-full bg-[#38BDF8] shrink-0"></span>
                   <span className="text-xs sm:text-sm font-extrabold text-[#1E293B]">Azul</span>
                 </div>
-              </div>
+              </button>
 
             </div>
           </div>
@@ -198,8 +206,11 @@ export default function ModelSelectionSection() {
             <div className="grid grid-cols-2 gap-4 max-w-lg md:max-w-2xl mx-auto relative" id="dinossauro-grid">
               
               {/* Green Dino Option (With absolute sticker exactly like custom paper reference badge) */}
-              <div className="bg-white rounded-[24px] border border-gray-150/60 p-4 sm:p-5 flex flex-col items-center justify-between shadow-3xs hover:shadow-2xs transition-shadow duration-300 relative overflow-visible" id="card-green-dino">
-                
+              <button 
+                onClick={() => onNavigateToChooseModel?.("dino-green")}
+                className="bg-white rounded-[24px] border border-gray-150/60 p-4 sm:p-5 flex flex-col items-center justify-between shadow-3xs hover:shadow-2xs transition-shadow duration-300 relative overflow-visible w-full hover:scale-102 cursor-pointer outline-none focus:ring-2 focus:ring-brand-blue/35" 
+                id="card-green-dino"
+              >
                 {/* "Mais escolhido pelos pequenos" yellow sticker matching visual reference exactly */}
                 <div className="absolute -top-3.5 -left-3.5 angle-12 bg-[#FCD34D] text-[#78350F] rounded-full p-2.5 sm:p-3 shadow-md border-2 border-white flex flex-col items-center justify-center leading-none text-center z-10 animate-bounce scale-90 sm:scale-100 origin-top-left" id="best-choice-sticker">
                   <span className="text-[9px] font-black uppercase tracking-widest block mb-0.5">👑 Mais</span>
@@ -216,10 +227,14 @@ export default function ModelSelectionSection() {
                   <span className="w-3 h-3 rounded-full bg-[#10B981] shrink-0"></span>
                   <span className="text-xs sm:text-sm font-extrabold text-[#1E293B]">Verde</span>
                 </div>
-              </div>
+              </button>
 
               {/* Blue Dino Option */}
-              <div className="bg-white rounded-[24px] border border-gray-150/60 p-4 sm:p-5 flex flex-col items-center justify-between shadow-3xs hover:shadow-2xs transition-shadow duration-300" id="card-blue-dino">
+              <button 
+                onClick={() => onNavigateToChooseModel?.("dino-blue")}
+                className="bg-white rounded-[24px] border border-gray-150/60 p-4 sm:p-5 flex flex-col items-center justify-between shadow-3xs hover:shadow-2xs transition-shadow duration-300 w-full hover:scale-102 cursor-pointer outline-none focus:ring-2 focus:ring-brand-blue/35" 
+                id="card-blue-dino"
+              >
                 <div className="w-full aspect-square flex items-center justify-center p-2">
                   <DinoToySvg bodyColor="#38BDF8" spineColor="#FCD34D" cardColor="#E0F2FE" />
                 </div>
@@ -228,7 +243,7 @@ export default function ModelSelectionSection() {
                   <span className="w-3 h-3 rounded-full bg-[#38BDF8] shrink-0"></span>
                   <span className="text-xs sm:text-sm font-extrabold text-[#1E293B]">Azul</span>
                 </div>
-              </div>
+              </button>
 
             </div>
           </div>
@@ -246,6 +261,18 @@ export default function ModelSelectionSection() {
             Todos os modelos acompanham o mesmo conteúdo educativo completo.
           </p>
         </div>
+
+        {/* Dynamic call-to-action button */}
+        {onNavigateToChooseModel && (
+          <div className="mt-8 flex justify-center" id="model-navigate-cta">
+            <button
+              onClick={onNavigateToChooseModel}
+              className="bg-brand-yellow hover:bg-brand-yellow-hover text-gray-950 font-black tracking-widest text-sm px-10 py-4.5 rounded-2xl shadow-[0_5px_0_0_#d39e0d] border border-amber-400 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-102"
+            >
+              ESCOLHER MEU MODELO & GARANTIR DESCONTO
+            </button>
+          </div>
+        )}
 
       </div>
     </section>
